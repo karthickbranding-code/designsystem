@@ -4,7 +4,7 @@ const groups=[
 {name:"Foundations",description:"Tokens, principles and visual foundations.",items:["Foundations"]},
 {name:"Core",description:"Essential interface building blocks.",items:["Button","IconButton","Card","MetricCard","Badge","Status","Avatar"]},
 {name:"Forms",description:"Inputs, search and file collection.",items:["Input","SearchInput","FileUpload"]},
-{name:"Data",description:"Tables, filters, pagination and commands.",items:["DataTable","Pagination","FilterBar","CommandPalette"]},
+{name:"Data",description:"Enterprise data presentation, tables and grids.",items:["Table","DataTable","DenseTable","SortableTable","SelectableTable","SearchableTable","PaginatedTable","StickyTable","StatusTable","ActionTable","GroupedTable","MetricTable","VirtualizedTable","DataGrid","TableToolbar","BulkActionBar","Pagination","FilterBar","CommandPalette"]},
 {name:"Navigation",description:"Application navigation and page structure.",items:["AppShell","PageHeader","Tabs"]},
 {name:"Feedback",description:"System states, alerts and loading patterns.",items:["Alert","Skeleton","EmptyState"]},
 {name:"Overlays",description:"Focused dialogs and layered interactions.",items:["Dialog"]},
@@ -43,9 +43,26 @@ FAQ:"Expandable answers for common questions.",
 AIChat:"Conversational interface for AI-assisted workflows.",
 AgentCard:"Reusable surface for AI agents and capabilities.",
 InsightCard:"Actionable AI-generated insight presentation.",
-StatusMonitor:"Operational health monitoring for industrial systems."
+StatusMonitor:"Operational health monitoring for industrial systems.",
+Table:"Foundation table with density, selection, sorting, sticky headers and row states.",
+DataTable:"Simple reusable table API for structured product data.",
+DenseTable:"Compact table for high-volume operational datasets.",
+SortableTable:"Column sorting with ascending and descending states.",
+SelectableTable:"Row selection for bulk workflows and operational actions.",
+SearchableTable:"Client-side search across configured table fields.",
+PaginatedTable:"Table with page navigation for larger datasets.",
+StickyTable:"Scrollable dataset with persistent column headers.",
+StatusTable:"Semantic status rendering using Enterprise Tech Blue badges.",
+ActionTable:"Row-level actions for enterprise workflows.",
+GroupedTable:"Multi-level grouped column headers for complex datasets.",
+MetricTable:"Tabular KPI and performance presentation.",
+VirtualizedTable:"Windowed rendering pattern for very large datasets.",
+DataGrid:"Advanced enterprise grid with search, sorting, selection and pagination.",
+TableToolbar:"Standard title, filters, search and action area above data.",
+BulkActionBar:"Contextual bulk-action surface for selected records."
 };
 function Demo({name}){const C=DS[name];if(name==="Foundations")return <section><h2>Foundations</h2><p>Enterprise Tech Blue uses blue primary actions, neutral surfaces, 4px base spacing, 8px rhythm, Inter/system typography, borders before shadows and accessible focus states.</p><div className="swatches"><span>#2563EB</span><span>#F8FAFC</span><span>#0F172A</span><span>#E2E8F0</span><span>#10B981</span><span>#F59E0B</span><span>#F43F5E</span></div></section>;
+if(name==="Table"||name==="DataTable"||name==="DenseTable"||name==="SortableTable"||name==="SelectableTable"||name==="SearchableTable"||name==="PaginatedTable"||name==="StickyTable"||name==="StatusTable"||name==="ActionTable"||name==="GroupedTable"||name==="MetricTable"||name==="VirtualizedTable"||name==="DataGrid"||name==="TableToolbar"||name==="BulkActionBar"){const rows=[{id:1,name:"Orion Plant 01",status:"Healthy",leads:42,owner:"Operations",value:"₹18.4L"},{id:2,name:"YodaEdge Z20",status:"Warning",leads:31,owner:"Product",value:"₹12.8L"},{id:3,name:"Predict.AI",status:"Active",leads:56,owner:"Marketing",value:"₹24.2L"},{id:4,name:"Conserve.AI",status:"Published",leads:28,owner:"Growth",value:"₹9.6L"},{id:5,name:"Trust.AI",status:"Critical",leads:17,owner:"Sales",value:"₹6.3L"}];const columns=[{key:"name",label:"Asset / Campaign",sortable:true},{key:"status",label:"Status",sortable:true},{key:"leads",label:"Leads",align:"right",sortable:true},{key:"owner",label:"Owner"},{key:"value",label:"Pipeline",align:"right"}];if(name==="Table"||name==="DataTable")return <section><h2>{name}</h2><DS.Table columns={columns} rows={rows}/></section>;if(name==="DenseTable")return <section><h2>DenseTable</h2><DS.DenseTable columns={columns} rows={rows}/></section>;if(name==="SortableTable")return <section><h2>SortableTable</h2><DS.SortableTable columns={columns} rows={rows}/></section>;if(name==="SelectableTable")return <section><h2>SelectableTable</h2><DS.SelectableTable columns={columns} rows={rows} selectedKeys={[2]}/></section>;if(name==="SearchableTable")return <section><h2>SearchableTable</h2><DS.SearchableTable columns={columns} rows={rows}/></section>;if(name==="PaginatedTable")return <section><h2>PaginatedTable</h2><DS.PaginatedTable columns={columns} rows={[...rows,...rows,...rows]} pageSize={3}/></section>;if(name==="StickyTable")return <section><h2>StickyTable</h2><DS.StickyTable columns={columns} rows={[...rows,...rows,...rows,...rows]}/></section>;if(name==="StatusTable")return <section><h2>StatusTable</h2><DS.StatusTable columns={columns} rows={rows}/></section>;if(name==="ActionTable")return <section><h2>ActionTable</h2><DS.ActionTable columns={columns} rows={rows} actions={[{label:"Open",icon:"↗",onClick:()=>{}}]}/></section>;if(name==="GroupedTable")return <section><h2>GroupedTable</h2><DS.GroupedTable groups={[{label:"Identity",span:2},{label:"Performance",span:3}]} columns={columns} rows={rows}/></section>;if(name==="MetricTable")return <section><h2>MetricTable</h2><DS.MetricTable columns={columns} rows={rows}/></section>;if(name==="VirtualizedTable")return <section><h2>VirtualizedTable</h2><DS.VirtualizedTable columns={columns} rows={Array.from({length:200},(_,i)=>({...rows[i%5],id:i+1,name:"Asset "+(i+1)}))} height={320}/></section>;if(name==="DataGrid")return <section><h2>DataGrid</h2><DS.DataGrid columns={columns} rows={rows.concat(rows)} checkboxSelection/></section>;if(name==="TableToolbar")return <section><DS.TableToolbar title="Campaign performance" description="Monitor active marketing opportunities." search={<DS.SearchInput placeholder="Search campaigns"/>} actions={<DS.Button>Export</DS.Button>}/><DS.Table columns={columns} rows={rows}/></section>;return <section><h2>BulkActionBar</h2><DS.BulkActionBar count={3}><DS.Button variant="secondary">Assign</DS.Button><DS.Button variant="destructive">Archive</DS.Button></DS.BulkActionBar></section>;}
 if(name==="Button")return <section><h2>Button</h2><div className="demo-row"><C>Primary</C><C variant="secondary">Secondary</C><C variant="ghost">Ghost</C><C variant="destructive">Destructive</C><C disabled>Disabled</C></div><pre className="code">&lt;Button&gt;Primary&lt;/Button&gt;</pre></section>;
 if(name==="IconButton")return <section><h2>IconButton</h2><div className="demo-row"><C aria-label="Add">+</C><C aria-label="Close">×</C><C disabled aria-label="More">•••</C></div></section>;
 if(name==="Card")return <section><h2>Card</h2><C><strong>Factory Intelligence</strong><p>Reusable surface for dashboard content, product modules and business information.</p></C></section>;
