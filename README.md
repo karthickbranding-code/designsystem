@@ -1,50 +1,60 @@
 # Enterprise Tech Blue Design System
 
-A reusable **Enterprise Tech Blue Design System** for enterprise SaaS, AI, industrial, analytics, CFO, HR and operations products.
+A reusable, framework-light **Enterprise Tech Blue** component library for enterprise SaaS, web applications, websites, AI products and industrial products.
 
-## Now includes
+## Architecture
 
-- Master design tokens and responsive rules
-- AI-first coding skill
-- Reusable React component library
-- Accessible interaction states
-- Enterprise dashboard primitives
-- CSS distributed with the library
-- Figma implementation guidance
+One design system. One source of truth. Multiple product layers.
 
-## React library
+- **Foundations** — tokens, typography, spacing, radius, responsive rules
+- **Core** — reusable primitives used everywhere
+- **SaaS / Data** — tables, metrics, filters, pagination, command palette
+- **Web App** — app shell, page header and application layout
+- **Website** — hero, feature grid, CTA, FAQ
+- **AI / Industrial** — agent, insight, upload, status monitor, AI chat
 
-Install the package from this repository:
+Product applications should consume this library instead of recreating its CSS.
+
+## React usage
 
 ```bash
 npm install github:karthickbranding-code/designsystem
 ```
 
-Import the library and its styles:
-
 ```jsx
-import { Button, Card, MetricCard, Input, Badge, Tabs, Dialog } from "@karthickbranding/enterprise-tech-blue";
+import {
+  Button, Card, MetricCard, DataTable, AppShell,
+  Hero, AgentCard, InsightCard
+} from "@karthickbranding/enterprise-tech-blue";
 import "@karthickbranding/enterprise-tech-blue/styles.css";
 ```
 
-### Core components
+## Component layers
 
-Button, IconButton, Card, MetricCard, Input, SearchInput, Badge/Status, Avatar, Tabs, Alert, Skeleton/Loading, EmptyState, Dialog.
+### Core
+Button, IconButton, Card, Input, SearchInput, Badge, Status, Avatar, Tabs, Alert, Skeleton, Loading, EmptyState, Dialog.
 
-The library owns the visual implementation. Product applications should consume these components rather than recreating the same CSS locally.
+### SaaS / Data
+MetricCard, DataTable, Pagination, FilterBar, CommandPalette.
+
+### Web App
+AppShell, PageHeader.
+
+### Website
+Hero, FeatureGrid, CTA, FAQ.
+
+### AI / Industrial
+AgentCard, InsightCard, FileUpload, StatusMonitor, AIChat.
 
 ## Source of truth
 
-- `skills/enterprise-tech-blue/SKILL.md` — AI coding rules
-- `docs/ENTERPRISE_TECH_BLUE_DESIGN_SYSTEM.md` — complete design specification
-- `src/index.jsx` — React component API
-- `src/styles.css` — token-backed implementation
+- `skills/enterprise-tech-blue/SKILL.md`
+- `docs/ENTERPRISE_TECH_BLUE_DESIGN_SYSTEM.md`
+- `src/index.jsx`
+- `src/styles.css`
 
-## Build
+## Design rule
 
-```bash
-npm install
-npm run build
-```
+**Reuse first. Extend second. Duplicate last.**
 
-The package is intentionally lightweight: React is a peer dependency and the library has no UI framework dependency.
+New components should be added to the library when they are reusable across more than one product or represent an important product pattern. Keep application-specific compositions inside the consuming application.
