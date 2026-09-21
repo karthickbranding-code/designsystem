@@ -1,0 +1,28 @@
+{
+  "name": "@karthickbranding/enterprise-tech-blue",
+  "version": "0.1.0",
+  "description": "Enterprise Tech Blue reusable React component library for enterprise SaaS, AI, industrial and analytics products.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "vite": "^7.1.0"
+  }
+}
