@@ -71,9 +71,24 @@ if(name==="AgentCard")return <section><h2>AgentCard</h2><C title="Marketing Inte
 if(name==="InsightCard")return <section><h2>InsightCard</h2><C title="Insight" insight="Lead quality improved after targeted industrial content." /></section>;
 if(name==="StatusMonitor")return <section><h2>StatusMonitor</h2><C title="Plant AI Gateway" status="Operational" /></section>;
 return <section><h2>{name}</h2><p>Documentation page ready for this component.</p></section>}
+function MiniPreview({name}){
+if(["Button","IconButton"].includes(name))return <div className="mini-actions"><span className="mini-btn primary">Action</span><span className="mini-btn">Cancel</span><span className="mini-icon">+</span></div>;
+if(["Input","SearchInput"].includes(name))return <div className="mini-form"><span className="mini-label">Search</span><span className="mini-input">Type to search…</span></div>;
+if(["Badge","Status"].includes(name))return <div className="mini-status"><span className="mini-badge blue">Active</span><span className="mini-badge green">Healthy</span><span className="mini-badge amber">Review</span></div>;
+if(name==="MetricCard")return <div className="mini-metric"><span>Qualified Leads</span><strong>42</strong><small>+12% this month</small></div>;
+if(name==="DataTable")return <div className="mini-table"><i/><i/><i/><i/><i/><i/></div>;
+if(["Tabs","AppShell","PageHeader"].includes(name))return <div className="mini-nav"><span className="active">Overview</span><span>Analytics</span><span>Settings</span></div>;
+if(["Alert","InsightCard","AgentCard","StatusMonitor"].includes(name))return <div className="mini-alert"><span className="mini-alert-icon">✓</span><div><strong>{name==="StatusMonitor"?"System operational":"AI insight available"}</strong><small>Actionable information</small></div></div>;
+if(["Hero","CTA"].includes(name))return <div className="mini-hero"><strong>{name==="Hero"?"AI That Works Where Industry Happens.":"Ready to get started?"}</strong><span className="mini-btn primary">Explore</span></div>;
+if(name==="AIChat")return <div className="mini-chat"><span>How can I help?</span><span className="user">Analyze campaign data</span></div>;
+if(name==="FileUpload")return <div className="mini-upload">Drop files here or browse</div>;
+if(name==="FAQ")return <div className="mini-faq"><span>What is Enterprise Tech Blue?</span><b>+</b><span>How do I use components?</span><b>+</b></div>;
+if(name==="Foundations")return <div className="mini-foundations"><b/><b/><b/><b/><b/></div>;
+return <div className="mini-surface"><span className="preview-dot"/><span className="preview-line preview-line-long"/><span className="preview-line"/><span className="preview-control"/></div>;
+}
 function ComponentCard({name,onOpen}){
 return <button className="component-card" onClick={()=>onOpen(name)}>
-  <div className="component-card-preview"><span className="preview-dot"/><span className="preview-line preview-line-long"/><span className="preview-line"/><span className="preview-control"/></div>
+  <div className="component-card-preview"><MiniPreview name={name}/></div>
   <div className="component-card-body">
     <div className="component-card-title"><strong>{name}</strong><span>→</span></div>
     <p>{descriptions[name]}</p>
