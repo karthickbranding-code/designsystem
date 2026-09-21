@@ -1,19 +1,84 @@
 # Enterprise Tech Blue Design System
 
-A reusable, framework-light **Enterprise Tech Blue** component library for enterprise SaaS, web applications, websites, AI products and industrial products.
+A reusable **Enterprise Tech Blue** design system for enterprise SaaS, web applications, websites, AI products and industrial products.
 
 ## Architecture
 
-One design system. One source of truth. Multiple product layers.
+One system. Multiple product layers. Shared foundations and reusable components.
 
-- **Foundations** — tokens, typography, spacing, radius, responsive rules
-- **Core** — reusable primitives used everywhere
-- **SaaS / Data** — tables, metrics, filters, pagination, command palette
-- **Web App** — app shell, page header and application layout
-- **Website** — hero, feature grid, CTA, FAQ
-- **AI / Industrial** — agent, insight, upload, status monitor, AI chat
+```text
+Enterprise Tech Blue
+├── Foundations
+│   ├── Colors
+│   ├── Typography
+│   ├── Spacing
+│   ├── Grid
+│   ├── Radius
+│   ├── Elevation
+│   └── Accessibility
+│
+├── Packages
+│   ├── foundations
+│   ├── core
+│   ├── forms
+│   ├── data
+│   ├── navigation
+│   ├── feedback
+│   ├── overlays
+│   ├── layout
+│   ├── website
+│   ├── ai
+│   ├── industrial
+│   └── icons
+│
+├── Documentation
+│   ├── Component Catalogue
+│   ├── Foundations Catalogue
+│   ├── Patterns Catalogue
+│   └── Individual Component Documentation
+│
+├── Examples
+│   ├── SaaS Dashboard
+│   ├── Website
+│   ├── AI Workspace
+│   ├── Industrial Operations
+│   └── Marketing Command Center
+│
+└── Runtime Library
+    ├── src/index.jsx
+    └── src/styles.css
+```
 
-Product applications should consume this library instead of recreating its CSS.
+## Component Catalogue
+
+The repository is organized so every reusable component can have its own discoverable folder and documentation.
+
+### Core
+Button, IconButton, Card, MetricCard, Badge, Avatar.
+
+### Forms
+Input, SearchInput, FileUpload.
+
+### Data
+DataTable, Pagination, FilterBar, CommandPalette.
+
+### Navigation
+AppShell, PageHeader, Tabs.
+
+### Feedback
+Alert, Skeleton, EmptyState, Loading.
+
+### Overlays
+Dialog.
+
+### Website
+Hero, FeatureGrid, CTA, FAQ.
+
+### AI
+AIChat, AgentCard, InsightCard.
+
+### Industrial
+StatusMonitor and future plant, machine, sensor and operations components.
 
 ## React usage
 
@@ -26,25 +91,9 @@ import {
   Button, Card, MetricCard, DataTable, AppShell,
   Hero, AgentCard, InsightCard
 } from "@karthickbranding/enterprise-tech-blue";
+
 import "@karthickbranding/enterprise-tech-blue/styles.css";
 ```
-
-## Component layers
-
-### Core
-Button, IconButton, Card, Input, SearchInput, Badge, Status, Avatar, Tabs, Alert, Skeleton, Loading, EmptyState, Dialog.
-
-### SaaS / Data
-MetricCard, DataTable, Pagination, FilterBar, CommandPalette.
-
-### Web App
-AppShell, PageHeader.
-
-### Website
-Hero, FeatureGrid, CTA, FAQ.
-
-### AI / Industrial
-AgentCard, InsightCard, FileUpload, StatusMonitor, AIChat.
 
 ## Source of truth
 
@@ -57,4 +106,4 @@ AgentCard, InsightCard, FileUpload, StatusMonitor, AIChat.
 
 **Reuse first. Extend second. Duplicate last.**
 
-New components should be added to the library when they are reusable across more than one product or represent an important product pattern. Keep application-specific compositions inside the consuming application.
+IBM Carbon is used only as a benchmark for the level of repository organization and documentation quality. Enterprise Tech Blue keeps its own visual language, tokens and product philosophy.
