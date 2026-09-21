@@ -138,3 +138,6 @@ export const AIChat = ({ messages=[], onSend, placeholder="Ask a question..." })
 );
 
 export { React };
+
+// Table / DataGrid family
+export * from "./table.jsx";
